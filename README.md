@@ -8,7 +8,7 @@
 3. Run `clean`. This erases previous cached output files
 4. Run `compile`. This would generate the scala files required from proto using **protobuf**
 5. First we need to start gRPC server, by executing command `run`. The terminal would give a choice of 2 files: HelloWorldClient & HelloWorldServer, enter `2` to select 2nd choice, i.e. server
-	![server start](./screemshots/server_start.png)
+	![](./screemshots/server_start.png)
 6. Open another terminal, since the previous would be occupied by the listening server
 7. Redo step 2
 
@@ -30,6 +30,8 @@
 9. The output will contain a line `Result: <calculation-output>`. 
 
 This is the result of your input returned from AWS Lambda function, accessed through AWS API Gateway
+
+![](./screenshots/client_run.png)
 
 ##Technologies used
 - Scala
