@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: com.google.guava:guava:25.1-android:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.google.guava/guava/bundles/guava-25.1-android.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.google.guava/guava/srcs/guava-25.1-android-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
