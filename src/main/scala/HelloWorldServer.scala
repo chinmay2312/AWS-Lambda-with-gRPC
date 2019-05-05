@@ -1,9 +1,11 @@
 import java.util.logging.Logger
 
 import com.example.protos.hello.{GreeterGrpc, HelloReply, HelloRequest}
-
 import io.grpc.{Server, ServerBuilder}
+
 import scala.concurrent.{ExecutionContext, Future}
+import spray.json._
+import scala.io._
 
 //import scalaj.http._
 
@@ -55,8 +57,10 @@ class HelloWorldServer(executionContext: ExecutionContext) { self =>
       val op = params(2)
       val responseAWS = scala.io.Source.fromURL("https://7ub4yveql2.execute-api.us-east-1.amazonaws.com/public/calc?operand1="+a+"&operand2="+b+"&operator="+op)
       val result = responseAWS.mkString
+      val json = result.parseJson.asJsObject
+      //json.fields("c")
       //val reply = HelloReply(message = "Hello " + req.name + result)
-      val reply = HelloReply(message = "Result = "+result)
+      val reply = HelloReply(message = json.fields("c").toString())
       responseAWS.close()
       Future.successful(reply)
     }

@@ -8,7 +8,7 @@ PB.targets in Compile := Seq(
   scalapb.gen() -> (sourceManaged in Compile).value
 )
 
-libraryDependencies += "org.scalaj" % "scalaj-http_2.11" % "2.3.0"
+libraryDependencies += "io.spray" %% "spray-json" % "1.3.5"
 
 libraryDependencies ++= Seq(
   "io.grpc" % "grpc-netty" % scalapb.compiler.Version.grpcJavaVersion,

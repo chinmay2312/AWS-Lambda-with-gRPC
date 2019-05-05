@@ -35,11 +35,12 @@ class HelloWorldClient private(
 
   /** Say hello to server. */
   def greet(name: String): Unit = {
-    logger.info("Will try to greet " + name + " ...")
+    val params = name.split(",")
+    logger.info("Calculating " + params(0)+" "+params(2)+" "+ params(1)+ " from AWS Lambda function through API Gateway")
     val request = HelloRequest(name = name)
     try {
       val response = blockingStub.sayHello(request)
-      logger.info("Greeting: " + response.message)
+      logger.info("Result: " + response.message)
     }
     catch {
       case e: StatusRuntimeException =>
