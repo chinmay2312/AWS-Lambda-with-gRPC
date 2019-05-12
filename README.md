@@ -7,8 +7,7 @@
 2. Run `sbt`. This launches the sbt command line
 3. Run `clean`. This erases previous cached output files
 4. Run `compile`. This would generate the scala files required from proto using **protobuf**
-5. First we need to start gRPC server, by executing command `run`. The terminal would give a choice of 2 files: HelloWorldClient & HelloWorldServer, enter `2` to select 2nd choice, i.e. server
-	![](./screenshots/server_start.png)
+5. First we need to start gRPC server, by executing command `runMain GRPCServer`.
 6. Open another terminal, since the previous would be occupied by the listening server
 7. Redo step 2
 
@@ -26,7 +25,7 @@
 
 	Observe that the order of the operands is important for subtraction and division
 
-8. Now we execute client, with command line parameters. Type `run <input-as-shown-above>` command again. For the choices provided, enter `1` to select HelloWorldClient.
+8. Now we execute client, with command line parameters. Type `runMain GRPCClient <input-as-shown-above>` command.
 9. The output will contain a line `Result: <calculation-output>`. 
 
 This is the result of your input returned from AWS Lambda function, accessed through AWS API Gateway
@@ -36,6 +35,8 @@ This is the result of your input returned from AWS Lambda function, accessed thr
 ##Technologies used
 - Scala
 - SBT
+- gRPC
+- ScalaPB: ProtoBuf for Scala
 
 ##Author
 Chinmay Gangal: cganga2@uic.edu

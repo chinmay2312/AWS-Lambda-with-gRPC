@@ -16,7 +16,7 @@ object GRPCClient {
     val client = GRPCClient("localhost", 50051)
     try {
       val user = args.headOption.getOrElse("1,5,div")
-      client.greet(user)
+      println("Your calculated result is: "+client.greet(user))
     } finally {
       client.shutdown()
     }
@@ -34,17 +34,19 @@ class GRPCClient private(
   }
 
   /** Say hello to server. */
-  def greet(name: String): Unit = {
+  def greet(name: String): String = {
     val params = name.split(",")
     logger.info("Calculating " + params(0)+" "+params(2)+" "+ params(1)+ " from AWS Lambda function through API Gateway")
     val request = HelloRequest(name = name)
     try {
       val response = blockingStub.sayHello(request)
       logger.info("Result: " + response.message)
+      response.message
     }
     catch {
       case e: StatusRuntimeException =>
         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus)
+        "Failed to calculate"
     }
   }
 }

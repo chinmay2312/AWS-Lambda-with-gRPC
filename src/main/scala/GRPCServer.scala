@@ -9,18 +9,46 @@ import scala.io._
 
 //import scalaj.http._
 
+/**
+  * @author Chinmay Gangal
+  */
 object GRPCServer {
   private val logger = Logger.getLogger(classOf[GRPCServer].getName)
 
   def main(args: Array[String]): Unit = {
-    val server = new GRPCServer(ExecutionContext.global)
+    val server: GRPCServer = new GRPCServer(ExecutionContext.global)
+    startServer(server)
+    blockServerUntilShutdown(server)
+  }
+
+  /**
+    * Stateless method for starting server
+    *
+    * @param server GRPC server instance
+    */
+  def startServer(server: GRPCServer): Unit = {
     server.start()
+  }
+
+  /**
+    * Stateless method for blocking server instance
+    * @param server GRPC server instance
+    */
+  def blockServerUntilShutdown(server: GRPCServer): Unit =  {
     server.blockUntilShutdown()
+  }
+
+  def stopServer(server: GRPCServer): Unit =  {
+    server.stop()
   }
 
   private val port = 50051
 }
 
+/**
+  * @author Chinmay gangal
+  * @param executionContext Context of execution
+  */
 class GRPCServer(executionContext: ExecutionContext) { self =>
   private[this] var server: Server = _
 
@@ -49,12 +77,13 @@ class GRPCServer(executionContext: ExecutionContext) { self =>
   private class GreeterImpl extends GreeterGrpc.Greeter {
     override def sayHello(req: HelloRequest): Future[HelloReply] = {
 
-      //val responseAWS = Http("https://7ub4yveql2.execute-api.us-east-1.amazonaws.com/public/calc?operand1=2&operand2=3&operator=add")//.asString
-      //val responseAWS = "{\"a\":2,\"b\":3,\"op\":\"add\",\"c\":5}"
+      //Read input parameters
       val params = req.name.split(",")
       val a = params(0)
       val b = params(1)
       val op = params(2)
+
+      //Call Lambda API Gateway
       val responseAWS = scala.io.Source.fromURL("https://7ub4yveql2.execute-api.us-east-1.amazonaws.com/public/calc?operand1="+a+"&operand2="+b+"&operator="+op)
       val result = responseAWS.mkString
       val json = result.parseJson.asJsObject
