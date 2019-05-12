@@ -38,7 +38,7 @@ This is the result of your input returned from AWS Lambda function, accessed thr
 ![](./screenshots/client_run.png)
 
 ##Development steps
-1. Created Lambda function for calculator using AWS SAM
+1. Created Lambda function for calculator using AWS SAM. URL: https://7ub4yveql2.execute-api.us-east-1.amazonaws.com/public/calc
 2. Added API Gateway to Lambda method, then tested online as REST request, and then from Postman
 3. Implemented local gRPC client-server as a Hello World application. Client & server are able to exchange basic String messages
 4. Connected this implementation with API from step 2
