@@ -1,6 +1,11 @@
 #CS441: Homework 6
 ##Using gRPC & REST requests to invoke AWS Lambda function through AWS API Gateway
 
+##Prerequisites
+* `protoc` should be installed
+* `SBT` and `Scala` should be installed
+* Internet connection required
+
 ##Steps to run
 
 1. Open command line at root of project (i.e. at /chinmay_gangal_hw6)
