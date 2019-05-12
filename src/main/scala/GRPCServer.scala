@@ -1,13 +1,11 @@
 import java.util.logging.Logger
 
 import com.example.protos.hello.{GreeterGrpc, HelloReply, HelloRequest}
+import com.typesafe.config.ConfigFactory
 import io.grpc.{Server, ServerBuilder}
 
 import scala.concurrent.{ExecutionContext, Future}
 import spray.json._
-import scala.io._
-
-//import scalaj.http._
 
 /**
   * @author Chinmay Gangal
@@ -42,7 +40,7 @@ object GRPCServer {
     server.stop()
   }
 
-  private val port = 50051
+  private val port:Int = ConfigFactory.load().getInt("port")
 }
 
 /**

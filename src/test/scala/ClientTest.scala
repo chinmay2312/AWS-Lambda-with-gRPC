@@ -1,6 +1,7 @@
 import org.scalatest.FlatSpec
 import spray.json._
 import GRPCServer._
+import com.typesafe.config.ConfigFactory
 
 import scala.concurrent.ExecutionContext
 
@@ -38,13 +39,19 @@ class ClientTest extends FlatSpec{
 
   /**
     * Integration test
+    * This covers multiple Unit tests, inlcuding the following:
+      * Checking gRPC implementation
+      * calculator implementaion
+      * server listeners
+      * checking port consistency with server
+      * Verifying port is read from config file, and not hardcoded
     */
   "GRPC Server" should "respond calculated result to GRPC Client" in {
     val server = new GRPCServer(ExecutionContext.global)
     startServer(server)
     //blockServerUntilShutdown(server)
 
-    val client = GRPCClient("localhost", 50051)
+    val client = GRPCClient("localhost", ConfigFactory.load().getInt("port"))
     val a = 2
     val b = 4
     val op = "div"

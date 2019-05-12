@@ -3,6 +3,7 @@ import java.util.logging.{Level, Logger}
 
 import com.example.protos.hello.{GreeterGrpc, HelloRequest}
 import com.example.protos.hello.GreeterGrpc.GreeterBlockingStub
+import com.typesafe.config.ConfigFactory
 import io.grpc.{ManagedChannel, ManagedChannelBuilder, StatusRuntimeException}
 
 object GRPCClient {
@@ -13,7 +14,7 @@ object GRPCClient {
   }
 
   def main(args: Array[String]): Unit = {
-    val client = GRPCClient("localhost", 50051)
+    val client = GRPCClient("localhost", ConfigFactory.load().getInt("port"))
     try {
       val user = args.headOption.getOrElse("1,5,div")
       println("Your calculated result is: "+client.greet(user))
