@@ -5,15 +5,15 @@ import com.example.protos.hello.{GreeterGrpc, HelloRequest}
 import com.example.protos.hello.GreeterGrpc.GreeterBlockingStub
 import io.grpc.{ManagedChannel, ManagedChannelBuilder, StatusRuntimeException}
 
-object HelloWorldClient {
-  def apply(host: String, port: Int): HelloWorldClient = {
+object GRPCClient {
+  def apply(host: String, port: Int): GRPCClient = {
     val channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build
     val blockingStub = GreeterGrpc.blockingStub(channel)
-    new HelloWorldClient(channel, blockingStub)
+    new GRPCClient(channel, blockingStub)
   }
 
   def main(args: Array[String]): Unit = {
-    val client = HelloWorldClient("localhost", 50051)
+    val client = GRPCClient("localhost", 50051)
     try {
       val user = args.headOption.getOrElse("1,5,div")
       client.greet(user)
@@ -23,11 +23,11 @@ object HelloWorldClient {
   }
 }
 
-class HelloWorldClient private(
+class GRPCClient private(
                                 private val channel: ManagedChannel,
                                 private val blockingStub: GreeterBlockingStub
                               ) {
-  private[this] val logger = Logger.getLogger(classOf[HelloWorldClient].getName)
+  private[this] val logger = Logger.getLogger(classOf[GRPCClient].getName)
 
   def shutdown(): Unit = {
     channel.shutdown.awaitTermination(5, TimeUnit.SECONDS)

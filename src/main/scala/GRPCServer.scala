@@ -9,11 +9,11 @@ import scala.io._
 
 //import scalaj.http._
 
-object HelloWorldServer {
-  private val logger = Logger.getLogger(classOf[HelloWorldServer].getName)
+object GRPCServer {
+  private val logger = Logger.getLogger(classOf[GRPCServer].getName)
 
   def main(args: Array[String]): Unit = {
-    val server = new HelloWorldServer(ExecutionContext.global)
+    val server = new GRPCServer(ExecutionContext.global)
     server.start()
     server.blockUntilShutdown()
   }
@@ -21,12 +21,12 @@ object HelloWorldServer {
   private val port = 50051
 }
 
-class HelloWorldServer(executionContext: ExecutionContext) { self =>
+class GRPCServer(executionContext: ExecutionContext) { self =>
   private[this] var server: Server = _
 
   private def start(): Unit = {
-    server = ServerBuilder.forPort(HelloWorldServer.port).addService(GreeterGrpc.bindService(new GreeterImpl, executionContext)).build.start
-    HelloWorldServer.logger.info("Server started, listening on " + HelloWorldServer.port)
+    server = ServerBuilder.forPort(GRPCServer.port).addService(GreeterGrpc.bindService(new GreeterImpl, executionContext)).build.start
+    GRPCServer.logger.info("Server started, listening on " + GRPCServer.port)
     sys.addShutdownHook {
       System.err.println("*** shutting down gRPC server since JVM is shutting down")
       self.stop()
