@@ -26,7 +26,7 @@
 	Observe that the order of the operands is important for subtraction and division
 
 8. Now we execute client, with command line parameters. Type `runMain GRPCClient <input-as-shown-above>` command.
-9. The output will contain a line `Result: <calculation-output>`. 
+9. The output will contain a line `...Result: <calculation-output>`. 
 
 This is the result of your input returned from AWS Lambda function, accessed through AWS API Gateway
 

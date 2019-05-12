@@ -1,0 +1,48 @@
+PS S:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6> sbt clean compile test
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+[info] Loading global plugins from C:\Users\chinm\.sbt\1.0\plugins
+[info] Updating ProjectRef(uri("file:/C:/Users/chinm/.sbt/1.0/plugins/"), "global-plugins")...
+[info] Done updating.
+[info] Loading settings for project chinmay_gangal_hw6-build from scalapb.sbt ...
+[info] Loading project definition from S:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\project
+[info] Updating ProjectRef(uri("file:/S:/Spring%202019/CS441%20Cloud/chinmay_gangal_hw6/project/"), "chinmay_gangal_hw6-build")...
+[info] Done updating.
+[info] Loading settings for project chinmay_gangal_hw6 from build.sbt ...
+[info] Set current project to chinmay_gangal_hw6 (in build file:/S:/Spring%202019/CS441%20Cloud/chinmay_gangal_hw6/)
+[info] Executing in batch mode. For better performance use sbt's shell
+[success] Total time: 0 s, completed 12 May, 2019 4:59:21 AM
+[info] Updating ...
+[info] Done updating.
+[warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
+[info] Compiling 1 protobuf files to S:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\target\scala-2.12\src_managed\main
+[info] Compiling schema S:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\src\main\protobuf\hello.proto
+protoc-jar: protoc version: 3.7.0, detected platform: windows-x86_64 (windows 10/amd64)
+protoc-jar: embedded: bin/3.7.0/protoc-3.7.0-windows-x86_64.exe
+protoc-jar: executing: [C:\Users\chinm\AppData\Local\Temp\protocjar2175317073515197165\bin\protoc.exe, --plugin=protoc-gen-scala=C:\Users\chinm\AppData\Local\Temp\protocbridge9194189680516791550.bat, --scala_out=grpc:S:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\target\scala-2.12\src_managed\main, -IS:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\src\main\protobuf, -IS:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\target\protobuf_external, -IS:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\src\main\protobuf, -IS:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\target\protobuf_external, S:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\src\main\protobuf\hello.proto]
+[info] Compiling protobuf
+[info] Protoc target directory: S:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\target\scala-2.12\src_managed\main
+[info] Compiling 6 Scala sources to S:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\target\scala-2.12\classes ...
+[info] Done compiling.
+[success] Total time: 11 s, completed 12 May, 2019 4:59:32 AM
+[info] Compiling 1 Scala source to S:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6\target\scala-2.12\test-classes ...
+[info] Done compiling.
+May 12, 2019 4:59:38 AM GRPCServer GRPCServer$$start
+INFO: Server started, listening on 50051
+May 12, 2019 4:59:38 AM GRPCClient greet
+INFO: Calculating 2 div 4 from AWS Lambda function through API Gateway
+May 12, 2019 4:59:38 AM GRPCClient greet
+INFO: Result: 0.5
+[info] ClientTest:
+[info] Lambda API
+[info] - should perform standard calculations
+[info] GRPC Server
+[info] - should respond calculated result to GRPC Client
+[info] Run completed in 4 seconds, 463 milliseconds.
+[info] Total number of tests run: 2
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 2, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[success] Total time: 7 s, completed 12 May, 2019 4:59:39 AM
+*** shutting down gRPC server since JVM is shutting down
+*** server shut down
+PS S:\Spring 2019\CS441 Cloud\chinmay_gangal_hw6>
